@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Loren Norman"]
   s.email       = ["lorennorman@gmail.com"]
   s.homepage    = "http://github.com/lorennorman/board_game_geek"
-  s.summary     = %q{BoardGameGeek.com scraper}
+  s.summary     = %q{BoardGameGeek.com Ruby Interface}
   s.description = %q{We love board games. We love coding. Let's code against the data from BoardGameGeek.com!}
 
   s.rubyforge_project = "board_game_geek"

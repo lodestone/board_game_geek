@@ -2,10 +2,20 @@ require "bundler/setup"
 require "nokogiri"
 require "open-uri"
 require "ostruct"
+require "json"
 
 module BoardGameGeek
 
   class Game < OpenStruct
+    def to_json(options={})
+      { name: name,
+        ranking:      ranking,
+        rating:       rating,
+        release_date: release_date,
+        url:          url,
+        image_url:    image_url
+      }.to_json
+    end
   end
 
   class Games
