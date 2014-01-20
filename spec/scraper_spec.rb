@@ -1,7 +1,7 @@
 require "spec_helper"
 
-describe BGG::Scraper do
-  subject { BGG::Scraper }
+describe BGG::Games do
+  subject { BGG::Games }
 
   after do
     VCR.eject_cassette
