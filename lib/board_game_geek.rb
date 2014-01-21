@@ -8,7 +8,8 @@ module BoardGameGeek
 
   class Game < OpenStruct
     def to_json(options={})
-      { name: name,
+      { name:         name,
+        bgg_id:       bgg_id,
         ranking:      ranking,
         rating:       rating,
         release_date: release_date,
@@ -66,10 +67,13 @@ module BoardGameGeek
               game_path = game_row.css(".collection_thumbnail a").first["href"]
               game_url = "http://boardgamegeek.com" + game_path
 
+              bgg_id = game_path.split("/")[-2]
+
               image_url = game_row.css(".collection_thumbnail img").first["src"]
               image_url.sub!("_mt", "_t")
 
               games << Game.new(name:         name,
+                                bgg_id:       bgg_id,
                                 ranking:      ranking,
                                 rating:       rating,
                                 release_date: release_date,
@@ -79,6 +83,7 @@ module BoardGameGeek
               puts ex
 
               games << Game.new(name:         defined?(name)         && name         || "failed parse",
+                                bgg_id:       defined?(bgg_id)       && bgg_id       || "failed parse",
                                 ranking:      defined?(ranking)      && ranking      || "failed parse",
                                 rating:       defined?(rating)       && rating       || "failed parse",
                                 release_date: defined?(release_date) && release_date || "failed parse",
